@@ -12,6 +12,7 @@ import { PagesComponent } from './pages.component';
 import { ProgressComponent } from './progress/progress.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../appRouting.module';
+import { AccountSettingsComponent } from './accountSettings/accountSettings.component';
 
 @NgModule({
   imports: [
@@ -26,13 +27,15 @@ import { AppRoutingModule } from '../appRouting.module';
     DashboardComponent,
     Grafica1Component,
     PagesComponent,
-    ProgressComponent
+    ProgressComponent,
+    AccountSettingsComponent
   ],
   exports:[
     DashboardComponent,
     Grafica1Component,
     PagesComponent,
-    ProgressComponent
+    ProgressComponent,
+    AccountSettingsComponent
   ]
 
 })
