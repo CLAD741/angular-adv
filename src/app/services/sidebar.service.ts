@@ -16,6 +16,16 @@ submenu:[
   {titulo: 'RXJS', url:'rxjs'},
 ]
 },
+
+{titulo: 'Mantenimientos', 
+icon:'mdi mdi-folder-lock-open',
+submenu:[
+  {titulo: 'Usuarios', url:'usuarios'},
+  {titulo: 'Hospitales', url:'hospitales'},
+  {titulo: 'Medicos', url:'medicos'},
+
+]
+},
 ];
 
 constructor() { }
