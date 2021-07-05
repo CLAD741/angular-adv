@@ -32,6 +32,10 @@ get uid():string{
   return this.usuario.uid || '';
 }
 
+get role(): string{
+  return this.usuario.role;
+}
+
 get headers(){
   return {
     headers:{
@@ -50,8 +54,15 @@ googleInit(){
     
   });
 }
+
+guardarLocalStorage(token:string, menu: any){
+  localStorage.setItem('token',token);
+  localStorage.setItem('menu',JSON.stringify(menu));
+}
 logout(){
   localStorage.removeItem('token');
+  localStorage.removeItem('menu');
+
   gapi.auth2.getAuthInstance();
   this.auth2.signOut().then( ()=> {
     this.ngZone.run(()=>{
@@ -70,7 +81,9 @@ validarToken() {
     map((res:any) =>{
       const {email, google, nombre, role,img='', uid} =res.usuario;
       this.usuario = new Usuario(nombre,email,'',img,google, role ,uid);
-      localStorage.setItem('token',res.token);
+
+      this.guardarLocalStorage(res.token,res.menu);
+
       return true;
     }),
     catchError((error)=> of(false))
@@ -82,7 +95,7 @@ crearUsuario(formData:RegisterForm){
     return this.http.post(`${base_url}/usuarios`,formData)
     .pipe(
       tap((res:any) =>{
-        localStorage.setItem('token',res.token)
+        this.guardarLocalStorage(res.token,res.menu);
       })
     );
 }
@@ -99,7 +112,7 @@ loginUsuario(formData:LoginForm){
     return this.http.post(`${base_url}/login`,formData)
             .pipe(
               tap((res:any) =>{
-                localStorage.setItem('token',res.token)
+                this.guardarLocalStorage(res.token,res.menu);
               })
             );
 }
@@ -107,7 +120,7 @@ loginGoogle(token){
     return this.http.post(`${base_url}/login/google`,{token})
             .pipe(
               tap((res:any) =>{
-                localStorage.setItem('token',res.token)
+                this.guardarLocalStorage(res.token,res.menu);
               })
             );
 }

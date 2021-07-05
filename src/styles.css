@@ -17,7 +17,9 @@
     height: 200px;
     display: block;
 }
-
+.w75{
+    width: 75px;
+}
 .w100 {
     width: 100px;
 }

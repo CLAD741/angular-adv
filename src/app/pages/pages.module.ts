@@ -21,6 +21,7 @@ import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.comp
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { BusquedasComponent } from './busquedas/busquedas.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,7 @@ import { MedicoComponent } from './mantenimientos/medicos/medico.component';
     PerfilComponent,
     UsuariosComponent,
     HospitalesComponent, 
-    MedicosComponent, MedicoComponent
+    MedicosComponent, MedicoComponent, BusquedasComponent
   ],
   exports:[
     DashboardComponent,
